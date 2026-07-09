@@ -54,7 +54,41 @@
 | **Web Crawler** | 基于 requests 和 BeautifulSoup 的网页爬虫工具 | [skills/web_crawler/](./skills/web_crawler/) |
 | **PDF-Word Converter** | PDF 与 Word 文档相互转换工具 | [skills/pdf_word_converter/](./skills/pdf_word_converter/) |
 
-## 安装
+## 快速安装（类似 npx 的便捷方式）
+
+### 一键克隆安装
+
+```bash
+git clone https://github.com/publisher-skill/claude-skill.git
+cd claude-skill
+pip install -r requirements.txt
+```
+
+### 直接从 GitHub 安装（使用 pipx）
+
+如果你有 `pipx`，可以直接安装并运行：
+
+```bash
+# 安装 pipx（如果还没有）
+python -m pip install --user pipx
+python -m pipx ensurepath
+
+# 使用 pipx 安装（当项目发布到 PyPI 时可用）
+# pipx install claude-skills
+```
+
+### 使用单个 Skill
+
+每个 skill 可以单独使用，无需安装整个集合：
+
+```bash
+# 只下载你需要的 skill（例如图片下载器）
+git clone --depth 1 https://github.com/publisher-skill/claude-skill.git temp-skills
+cd temp-skills/skills/image_downloader
+pip install -r requirements.txt
+```
+
+## 常规安装方式
 
 ### 安装所有 skills
 
