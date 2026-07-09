@@ -427,17 +427,17 @@ class ImageDownloader:
         self.skipped = []
 
     def extract_weixin_image_urls(self, html: str) -> List[str]:
-        """从微信公众号文章HTML中提取图片URL
+        """从文章HTML中提取图片URL
 
         Args:
             html: HTML内容
 
         Returns:
-            微信图片URL列表
+            图片URL列表
         """
         image_urls = []
 
-        # 1. 提取 data-src 中的 mmbiz 图片（这是微信文章图片的主要方式）
+        # 1. 提取 data-src 中的 mmbiz 图片（这是文章图片的主要方式）
         data_src_pattern = r'<img[^>]+data-src=["\'](https?://mmbiz\.(?:qpic\.cn|qlogo\.cn)/[^"\']+)["\']'
         data_src_matches = re.findall(data_src_pattern, html)
         for img_url in data_src_matches:
@@ -454,17 +454,17 @@ class ImageDownloader:
         image_urls = list(dict.fromkeys(image_urls))
         return image_urls
 
-    def download_from_weixin_article(self,
+    def download_from_v_article(self,
                                      url: str,
                                      output_dir: str,
                                      skip_if_exists: bool = True,
                                      min_file_size: int = 5000,
                                      filename_pattern: str = 'main_{index:03d}',
                                      verbose: bool = True) -> List[str]:
-        """从微信公众号文章下载图片
+        """从文章下载图片
 
         Args:
-            url: 微信文章URL
+            url: 文章URL
             output_dir: 输出目录
             skip_if_exists: 如果文件已存在则跳过
             min_file_size: 最小文件大小（字节，小于此值的会被删除）
@@ -488,11 +488,11 @@ class ImageDownloader:
             response.encoding = 'utf-8'
             html = response.text
 
-            # 提取微信图片URL
+            # 提取图片URL
             image_urls = self.extract_weixin_image_urls(html)
 
             if verbose:
-                print(f'\n找到 {len(image_urls)} 张微信图片\n')
+                print(f'\n找到 {len(image_urls)} 张图片\n')
 
             success_count = 0
             fail_count = 0
