@@ -11,6 +11,15 @@ pdf2docx>=0.5.0
 docx2pdf>=0.1.0
 python-docx>=0.8.11
 
+# PDF Tool
+pypdf>=4.0.0
+
+# Image Processor
+pillow>=10.0.0
+
+# SFTP Tool
+paramiko>=3.0.0
+
 # 测试依赖
 pytest>=7.0.0
 pytest-cov>=4.0.0

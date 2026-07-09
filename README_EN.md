@@ -4,78 +4,66 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![GitHub repo](https://img.shields.io/badge/GitHub-publisher--skill%2Fclaude--skill-green?logo=github)](https://github.com/publisher-skill/claude-skill)
 
-English version available: [README_EN.md](./README_EN.md)
+A practical Python skill tool collection containing multiple independent functional modules, usable as Claude Code custom skills or standalone imports.
 
-这是一个实用的 Python 技能工具集合，包含多个独立的功能模块，可以作为 Claude Code 的自定义 skills 使用，也可以单独导入使用。
+## Skill List
 
-## Skill 列表
+### 📄 Office Document (2+)
 
-### 📄 办公文档类 (2个+)
-
-| Skill 名称 | 描述 | 目录 |
+| Skill Name | Description | Directory |
 |-----------|------|------|
-| **PDF Tool** | PDF 文档处理工具（合并、拆分、加密、提取文本等） | [skills/pdf_tool/](./skills/pdf_tool/) |
-| **Image Processor** | 图片批量处理工具（压缩、格式转换、加水印等） | [skills/image_processor/](./skills/image_processor/) |
+| **PDF Tool** | PDF document processing tool (merge, split, encrypt, extract text, etc.) | [skills/pdf_tool/](./skills/pdf_tool/) |
+| **Image Processor** | Batch image processing tool (compress, convert format, add watermark, etc.) | [skills/image_processor/](./skills/image_processor/) |
 
-### 🔐 远程工具类 (1个+)
+### 🔐 Remote Tools (1+)
 
-| Skill 名称 | 描述 | 目录 |
+| Skill Name | Description | Directory |
 |-----------|------|------|
-| **SFTP Tool** | SFTP/SSH 远程文件管理工具（上传下载、列表、重命名、执行命令） | [skills/sftp_tool/](./skills/sftp_tool/) |
+| **SFTP Tool** | SFTP/SSH remote file management tool (upload, download, list, rename, execute commands) | [skills/sftp_tool/](./skills/sftp_tool/) |
 
-### 🎬 视频处理类 (1个+)
+### 🎬 Video Processing (1+)
 
-| Skill 名称 | 描述 | 目录 |
+| Skill Name | Description | Directory |
 |-----------|------|------|
-| **FFmpeg Processor** | FFmpeg 视频/音频处理工具（格式转换、裁剪、合并、水印等） | [skills/ffmpeg_processor/](./skills/ffmpeg_processor/) |
+| **FFmpeg Processor** | FFmpeg video/audio processing tool (format conversion, trim, merge, watermark, etc.) | [skills/ffmpeg_processor/](./skills/ffmpeg_processor/) |
 
-### 📷 图片处理类 (1个+)
+### 📷 Image Processing (1+)
 
-| Skill 名称 | 描述 | 目录 |
+| Skill Name | Description | Directory |
 |-----------|------|------|
-| **Image Downloader** | 网站图片批量下载工具（单张图片、HTML页面、全站爬取） | [skills/image_downloader/](./skills/image_downloader/) |
+| **Image Downloader** | Website image batch download tool (single image, HTML page, whole site crawl) | [skills/image_downloader/](./skills/image_downloader/) |
 
-### 📁 文件处理类 (4个)
+### 📁 File Processing (4)
 
-| Skill 名称 | 描述 | 目录 |
+| Skill Name | Description | Directory |
 |-----------|------|------|
-| **File Organizer** | 按类型、日期、扩展名自动整理文件 | [skills/file_organizer/](./skills/file_organizer/) |
-| **Batch Renamer** | 批量重命名文件（正则、序号、前缀等） | [skills/batch_renamer/](./skills/batch_renamer/) |
-| **Directory Tree** | 生成目录树，显示文件大小 | [skills/directory_tree/](./skills/directory_tree/) |
-| **File Comparator** | 对比文件/目录差异，查找重复文件 | [skills/file_comparator/](./skills/file_comparator/) |
+| **File Organizer** | Auto-organize files by type, date, extension | [skills/file_organizer/](./skills/file_organizer/) |
+| **Batch Renamer** | Batch rename files (regex, sequence, prefix, etc.) | [skills/batch_renamer/](./skills/batch_renamer/) |
+| **Directory Tree** | Generate directory tree, show file sizes | [skills/directory_tree/](./skills/directory_tree/) |
+| **File Comparator** | Compare file/directory differences, find duplicates | [skills/file_comparator/](./skills/file_comparator/) |
 
-### 📊 数据处理类 (1个+)
+### 📊 Data Processing (1+)
 
-| Skill 名称 | 描述 | 目录 |
+| Skill Name | Description | Directory |
 |-----------|------|------|
-| **Data Processor** | CSV/JSON 读写、转换、过滤、合并 | [skills/data_processor/](./skills/data_processor/) |
+| **Data Processor** | CSV/JSON read/write, convert, filter, merge | [skills/data_processor/](./skills/data_processor/) |
 
-### 🔒 开发工具类 (1个+)
+### 🔒 Dev Tools (1+)
 
-| Skill 名称 | 描述 | 目录 |
+| Skill Name | Description | Directory |
 |-----------|------|------|
-| **Password Generator** | 密码生成器（安全密码、易记密码、PIN码） | [skills/password_generator/](./skills/password_generator/) |
+| **Password Generator** | Password generator (secure, memorable, PIN) | [skills/password_generator/](./skills/password_generator/) |
 
-### 🌐 网络工具类 (2个)
+### 🌐 Web Tools (2)
 
-| Skill 名称 | 描述 | 目录 |
+| Skill Name | Description | Directory |
 |-----------|------|------|
-| **Web Crawler** | 基于 requests 和 BeautifulSoup 的网页爬虫工具 | [skills/web_crawler/](./skills/web_crawler/) |
-| **PDF-Word Converter** | PDF 与 Word 文档相互转换工具 | [skills/pdf_word_converter/](./skills/pdf_word_converter/) |
+| **Web Crawler** | Web crawler based on requests and BeautifulSoup | [skills/web_crawler/](./skills/web_crawler/) |
+| **PDF-Word Converter** | PDF and Word document conversion tool | [skills/pdf_word_converter/](./skills/pdf_word_converter/) |
 
-## 快速安装（类似 npx 的便捷方式）
+## Quick Install (like npx)
 
-### 使用 Conda 环境（推荐）
-
-项目包含 conda 环境配置文件：
-
-```bash
-# 创建并激活 conda 环境
-conda env update --file environment.yml --name claude-skill
-conda activate claude-skill
-```
-
-### 一键克隆安装
+### One-click Clone Install
 
 ```bash
 git clone https://github.com/publisher-skill/claude-skill.git
@@ -83,33 +71,33 @@ cd claude-skill
 pip install -r requirements.txt
 ```
 
-### 直接从 GitHub 安装（使用 pipx）
+### Direct from GitHub (with pipx)
 
-如果你有 `pipx`，可以直接安装并运行：
+If you have `pipx`, you can install and run directly:
 
 ```bash
-# 安装 pipx（如果还没有）
+# Install pipx (if needed)
 python -m pip install --user pipx
 python -m pipx ensurepath
 
-# 使用 pipx 安装（当项目发布到 PyPI 时可用）
+# Use pipx install (when project is published to PyPI)
 # pipx install claude-skills
 ```
 
-### 使用单个 Skill
+### Use a Single Skill
 
-每个 skill 可以单独使用，无需安装整个集合：
+Each skill can be used independently without installing the whole collection:
 
 ```bash
-# 只下载你需要的 skill（例如 PDF 工具）
+# Download only the skill you need (e.g., PDF Tool)
 git clone --depth 1 https://github.com/publisher-skill/claude-skill.git temp-skills
 cd temp-skills/skills/pdf_tool
 pip install -r requirements.txt
 ```
 
-## 常规安装方式
+## Regular Install
 
-### 安装所有 skills
+### Install All Skills
 
 ```bash
 git clone https://github.com/publisher-skill/claude-skill.git
@@ -117,9 +105,9 @@ cd claude-skill
 pip install -r requirements.txt
 ```
 
-### 单独安装某个 skill
+### Install a Single Skill
 
-每个 skill 都有自己的 `requirements.txt`，可以单独安装：
+Each skill has its own `requirements.txt` for individual install:
 
 ```bash
 # Web Crawler
@@ -138,231 +126,231 @@ pip install -r requirements.txt
 cd skills/sftp_tool
 pip install -r requirements.txt
 
-# FFmpeg Processor (需要系统安装 FFmpeg)
+# FFmpeg Processor (requires system FFmpeg installation)
 cd skills/ffmpeg_processor
-# 详见 README.md 安装 FFmpeg
+# See README.md for FFmpeg installation
 ```
 
-### 开发模式安装
+### Development Mode Install
 
 ```bash
 pip install -e ".[dev]"
 ```
 
-## 快速开始
+## Quick Start
 
-### 运行综合示例
+### Run the Comprehensive Example
 
 ```bash
 python example.py
 ```
 
-### PDF 工具示例
+### PDF Tool Example
 
 ```python
 from skills.pdf_tool import PDFTool
 
 pdf = PDFTool()
 
-# 合并多个 PDF
+# Merge multiple PDFs
 pdf.merge_pdfs(['part1.pdf', 'part2.pdf'], 'complete.pdf')
 
-# 拆分 PDF
+# Split PDF
 pdf.split_pdf('document.pdf', 'output_dir', start=0, end=4)
 
-# 提取文本
+# Extract text
 text = pdf.extract_text('document.pdf', 'output.txt')
 
-# 加密 PDF
+# Encrypt PDF
 pdf.encrypt_pdf('document.pdf', 'secure.pdf', 'mypassword')
 ```
 
-### 图片处理示例
+### Image Processing Example
 
 ```python
 from skills.image_processor import ImageProcessor
 
 img = ImageProcessor()
 
-# 压缩图片
+# Compress image
 img.compress_image('photo.jpg', 'compressed.jpg', quality=70)
 
-# 调整尺寸
+# Resize image
 img.resize_image('photo.jpg', 'small.jpg', 800, 600)
 
-# 转换格式
+# Convert format
 img.convert_format('image.png', 'image.jpg', format='JPEG', quality=85)
 
-# 添加水印
+# Add watermark
 img.add_watermark('photo.jpg', 'watermarked.jpg', 'logo.png')
 
-# 批量压缩
+# Batch compress
 success, failed = img.batch_process('original/', 'compressed/', img.compress_image, quality=75)
 ```
 
-### SFTP 远程管理示例
+### SFTP Remote Management Example
 
 ```python
 from skills.sftp_tool import SFTPClient
 
 with SFTPClient('example.com', 22, 'user', password='pass') as sftp:
 
-    # 上传文件
+    # Upload file
     sftp.upload_file('local.txt', 'remote.txt')
 
-    # 下载文件
+    # Download file
     sftp.download_file('remote.txt', 'local.txt')
 
-    # 列出目录
+    # List directory
     files = sftp.list_dir('/path')
 
-    # 创建目录
+    # Create directory
     sftp.mkdir('/new/path')
 
-    # 删除文件
+    # Delete file
     sftp.delete('/old/file.txt')
 
-    # 执行命令
+    # Execute command
     code, stdout, stderr = sftp.execute_command('ls -la')
 ```
 
-### 图片下载示例
+### Image Download Example
 
 ```python
 from skills.image_downloader import ImageDownloader
 
 dl = ImageDownloader(delay=1.0)
 
-# 从网页下载所有图片
+# Download all images from webpage
 downloaded = dl.download_from_url(
     'https://example.com/gallery',
     'images/gallery/',
     max_images=50
 )
 
-# 下载单张图片
+# Download single image
 dl.download_image(
     'https://example.com/img.jpg',
     'images/img.jpg'
 )
 
-# 批量下载 URL 列表
+# Batch download URL list
 urls = ['https://a.com/1.jpg', 'https://a.com/2.jpg']
 dl.download_from_list(urls, 'images/')
 
-# 全站爬取
+# Whole site crawl
 dl.crawl_and_download(
     'https://example.com',
     'images/site/',
     max_pages=20
 )
 
-# 查看摘要
+# Get summary
 summary = dl.get_summary()
-print(f"成功: {summary['downloaded']}")
+print(f"Success: {summary['downloaded']}")
 ```
 
-### FFmpeg 视频处理示例
+### FFmpeg Video Processing Example
 
 ```python
 from skills.ffmpeg_processor import FFmpegProcessor
 
 ff = FFmpegProcessor()
 
-# 检查 FFmpeg 是否可用
+# Check if FFmpeg is available
 if not ff.check_ffmpeg():
-    print("请先安装 FFmpeg！")
+    print("Please install FFmpeg first!")
     exit(1)
 
-# 格式转换
+# Format conversion
 ff.to_mp4('input.avi', 'output.mp4')
 ff.to_mp3('video.mp4', 'audio.mp3')
 
-# 获取视频信息
+# Get video info
 info = ff.get_video_info('video.mp4')
-print(f"分辨率: {info['video_resolution']}")
-print(f"时长: {info['duration']}秒")
+print(f"Resolution: {info['video_resolution']}")
+print(f"Duration: {info['duration']} seconds")
 
-# 裁剪视频
+# Trim video
 ff.trim_video('input.mp4', 'output.mp4', 
               start_time='00:00:10', duration='00:00:30')
 
-# 视频转 GIF
+# Video to GIF
 ff.video_to_gif('input.mp4', 'output.gif', fps=15)
 
-# 添加水印
+# Add watermark
 ff.add_watermark('input.mp4', 'output.mp4', 
                 'logo.png', position='br')
 ```
 
-### 文件整理示例
+### File Organizer Example
 
 ```python
 from skills.file_organizer import FileOrganizer
 
 organizer = FileOrganizer()
 
-# 按类型整理下载文件夹
+# Organize download folder by type
 stats = organizer.organize_by_type('~/Downloads')
 
-# 预览整理结果
+# Preview organization
 stats = organizer.organize_by_type('~/Downloads', dry_run=True)
 ```
 
-### 密码生成示例
+### Password Generator Example
 
 ```python
 from skills.password_generator import PasswordGenerator
 
 gen = PasswordGenerator()
 
-# 生成安全密码
+# Generate secure password
 password = gen.generate(length=16)
 
-# 生成易记密码
+# Generate memorable password
 memorable = gen.generate_memorable(word_count=4)
 
-# 检查强度
+# Check strength
 result = gen.check_strength(password)
-print(f"强度: {result['strength_text']}")
+print(f"Strength: {result['strength_text']}")
 ```
 
-### 数据处理示例
+### Data Processing Example
 
 ```python
 from skills.data_processor import DataProcessor
 
 proc = DataProcessor()
 
-# 读取 CSV
+# Read CSV
 data = proc.read_csv('data.csv')
 
-# 过滤数据
+# Filter data
 filtered = proc.filter_data(data, lambda x: int(x['age']) > 18)
 
-# 格式转换
+# Format conversion
 proc.csv_to_json('data.csv', 'data.json')
 ```
 
-更多示例请参考各个 skill 目录下的 `example.py` 和 `README.md`。
+More examples available in each skill directory's `example.py` and `README.md`.
 
-## 项目结构
+## Project Structure
 
 ```
 claude-skill/
-├── README.md                          # 本文件 (中文)
-├── README_EN.md                       # 英文版本
-├── __init__.py                        # 包入口
-├── pyproject.toml                     # 项目配置
-├── requirements.txt                   # 所有依赖
-├── example.py                         # 综合示例
-├── LICENSE                            # MIT 许可证
-├── CONTRIBUTING.md                    # 贡献指南
-├── .gitignore                         # Git 忽略文件
+├── README.md                          # This file (Chinese)
+├── README_EN.md                       # This file (English)
+├── __init__.py                        # Package entry
+├── pyproject.toml                     # Project config
+├── requirements.txt                   # All dependencies
+├── example.py                         # Comprehensive example
+├── LICENSE                            # MIT License
+├── CONTRIBUTING.md                    # Contribution guide
+├── .gitignore                         # Git ignore file
 ├── skills/                            # Claude Code Skills
 │   ├── __init__.py
 │   │
-│   ├── pdf_tool/                      # PDF 工具
+│   ├── pdf_tool/                      # PDF Tool
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -370,7 +358,7 @@ claude-skill/
 │   │   ├── example.py
 │   │   └── requirements.txt
 │   │
-│   ├── image_processor/               # 图片处理器
+│   ├── image_processor/               # Image Processor
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -378,7 +366,7 @@ claude-skill/
 │   │   ├── example.py
 │   │   └── requirements.txt
 │   │
-│   ├── sftp_tool/                     # SFTP 工具
+│   ├── sftp_tool/                     # SFTP Tool
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -386,7 +374,7 @@ claude-skill/
 │   │   ├── example.py
 │   │   └── requirements.txt
 │   │
-│   ├── image_downloader/               # 图片下载器
+│   ├── image_downloader/              # Image Downloader
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -394,7 +382,7 @@ claude-skill/
 │   │   ├── example.py
 │   │   └── requirements.txt
 │   │
-│   ├── ffmpeg_processor/              # FFmpeg 视频处理
+│   ├── ffmpeg_processor/              # FFmpeg Video Processor
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -402,7 +390,7 @@ claude-skill/
 │   │   ├── example.py
 │   │   └── requirements.txt
 │   │
-│   ├── file_organizer/               # 文件整理器
+│   ├── file_organizer/               # File Organizer
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -410,7 +398,7 @@ claude-skill/
 │   │   ├── example.py
 │   │   └── requirements.txt
 │   │
-│   ├── batch_renamer/                 # 批量重命名器
+│   ├── batch_renamer/                 # Batch Renamer
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -418,15 +406,15 @@ claude-skill/
 │   │   ├── example.py
 │   │   └── requirements.txt
 │   │
-│   ├── directory_tree/                # 目录树生成器
+│   ├── directory_tree/                # Directory Tree Generator
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
 │   │   ├── directory_tree.py
 │   │   ├── example.py
-│   │   └ requirements.txt
+│   │   └── requirements.txt
 │   │
-│   ├── file_comparator/               # 文件对比工具
+│   ├── file_comparator/               # File Comparator
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -434,7 +422,7 @@ claude-skill/
 │   │   ├── example.py
 │   │   └── requirements.txt
 │   │
-│   ├── data_processor/                # 数据处理器
+│   ├── data_processor/                # Data Processor
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -442,7 +430,7 @@ claude-skill/
 │   │   ├── example.py
 │   │   └── requirements.txt
 │   │
-│   ├── password_generator/            # 密码生成器
+│   ├── password_generator/            # Password Generator
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -450,7 +438,7 @@ claude-skill/
 │   │   ├── example.py
 │   │   └── requirements.txt
 │   │
-│   ├── web_crawler/                  # 网页爬虫
+│   ├── web_crawler/                  # Web Crawler
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -458,7 +446,7 @@ claude-skill/
 │   │   ├── example.py
 │   │   └ requirements.txt
 │   │
-│   └── pdf_word_converter/           # PDF-Word 转换
+│   └── pdf_word_converter/           # PDF-Word Converter
 │       ├── __init__.py
 │       ├── SKILL.md
 │       ├── README.md
@@ -467,42 +455,42 @@ claude-skill/
 │       ├── example.py
 │       └── requirements.txt
 │
-└── tests/                            # 测试目录
+└── tests/                            # Test directory
     ├── __init__.py
     ├── test_web_crawler.py
     └── test_pdf_word_converter.py
 ```
 
-## 运行测试
+## Run Tests
 
 ```bash
-# 运行所有测试
+# Run all tests
 pytest
 
-# 运行特定测试
+# Run specific test
 pytest tests/test_web_crawler.py -v
 
-# 显示覆盖率
+# Show coverage
 pytest --cov=skills tests/
 ```
 
-## 添加新 Skill
+## Add New Skills
 
-想要贡献新的 skill？请查看 [CONTRIBUTING.md](./CONTRIBUTING.md) 了解详细指南。
+Want to contribute a new skill? See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guide.
 
-简要步骤：
+Quick steps:
 
-1. 在 `skills/` 目录下创建新的子目录
-2. 创建必要的文件（`__init__.py`, 主模块, `SKILL.md`, `README.md`, `example.py`, `requirements.txt`）
-3. 在 `skills/__init__.py` 中添加新 skill
-4. 更新根目录 `README.md` 添加新 skill 说明
-5. 提交 Pull Request
+1. Create a new subdirectory in `skills/`
+2. Create required files (`__init__.py`, main module, `SKILL.md`, `README.md`, `example.py`, `requirements.txt`)
+3. Add new skill to `skills/__init__.py`
+4. Update root `README.md` and `README_EN.md` with new skill info
+5. Submit Pull Request
 
 ## License
 
-MIT License - 详见 [LICENSE](./LICENSE) 文件
+MIT License - see [LICENSE](./LICENSE) file for details.
 
-## 链接
+## Links
 
-- GitHub 仓库: https://github.com/publisher-skill/claude-skill
-- 问题反馈: https://github.com/publisher-skill/claude-skill/issues
+- GitHub repo: https://github.com/publisher-skill/claude-skill
+- Issues: https://github.com/publisher-skill/claude-skill/issues

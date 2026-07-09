@@ -1,0 +1,22 @@
+name: claude-skill
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip>=23.0
+  - requests>=2.31.0
+  - beautifulsoup4>=4.12.0
+  - lxml>=4.9.0
+  - pillow>=10.0.0
+  - paramiko>=3.0.0
+  - pytest>=7.0.0
+  - pytest-cov>=4.0.0
+  - black>=23.0.0
+  - flake8>=6.0.0
+  - pip:
+    - pypdf>=4.0.0
+    - pdf2docx>=0.5.0
+    - docx2pdf>=0.1.0
+    - python-docx>=0.8.11
+
