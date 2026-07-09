@@ -21,4 +21,8 @@ __all__ = [
     'ffmpeg_processor',
     'image_downloader',
     'sftp_tool',
+
+    # 新增办公技能
+    'pdf_tool',
+    'image_processor',
 ]

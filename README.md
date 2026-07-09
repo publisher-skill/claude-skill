@@ -8,6 +8,13 @@
 
 ## Skill 列表
 
+### 📄 办公文档类 (2个+)
+
+| Skill 名称 | 描述 | 目录 |
+|-----------|------|------|
+| **PDF Tool** | PDF 文档处理工具（合并、拆分、加密、提取文本等） | [skills/pdf_tool/](./skills/pdf_tool/) |
+| **Image Processor** | 图片批量处理工具（压缩、格式转换、加水印等） | [skills/image_processor/](./skills/image_processor/) |
+
 ### 🔐 远程工具类 (1个+)
 
 | Skill 名称 | 描述 | 目录 |
@@ -82,9 +89,9 @@ python -m pipx ensurepath
 每个 skill 可以单独使用，无需安装整个集合：
 
 ```bash
-# 只下载你需要的 skill（例如图片下载器）
+# 只下载你需要的 skill（例如 PDF 工具）
 git clone --depth 1 https://github.com/publisher-skill/claude-skill.git temp-skills
-cd temp-skills/skills/image_downloader
+cd temp-skills/skills/pdf_tool
 pip install -r requirements.txt
 ```
 
@@ -107,8 +114,12 @@ pip install -r requirements.txt
 cd skills/web_crawler
 pip install -r requirements.txt
 
-# Image Downloader
-cd skills/image_downloader
+# PDF Tool
+cd skills/pdf_tool
+pip install -r requirements.txt
+
+# Image Processor
+cd skills/image_processor
 pip install -r requirements.txt
 
 # SFTP Tool
@@ -134,12 +145,54 @@ pip install -e ".[dev]"
 python example.py
 ```
 
+### PDF 工具示例
+
+```python
+from skills.pdf_tool import PDFTool
+
+pdf = PDFTool()
+
+# 合并多个 PDF
+pdf.merge_pdfs(['part1.pdf', 'part2.pdf'], 'complete.pdf')
+
+# 拆分 PDF
+pdf.split_pdf('document.pdf', 'output_dir', start=0, end=4)
+
+# 提取文本
+text = pdf.extract_text('document.pdf', 'output.txt')
+
+# 加密 PDF
+pdf.encrypt_pdf('document.pdf', 'secure.pdf', 'mypassword')
+```
+
+### 图片处理示例
+
+```python
+from skills.image_processor import ImageProcessor
+
+img = ImageProcessor()
+
+# 压缩图片
+img.compress_image('photo.jpg', 'compressed.jpg', quality=70)
+
+# 调整尺寸
+img.resize_image('photo.jpg', 'small.jpg', 800, 600)
+
+# 转换格式
+img.convert_format('image.png', 'image.jpg', format='JPEG', quality=85)
+
+# 添加水印
+img.add_watermark('photo.jpg', 'watermarked.jpg', 'logo.png')
+
+# 批量压缩
+success, failed = img.batch_process('original/', 'compressed/', img.compress_image, quality=75)
+```
+
 ### SFTP 远程管理示例
 
 ```python
 from skills.sftp_tool import SFTPClient
 
-# 密码认证
 with SFTPClient('example.com', 22, 'user', password='pass') as sftp:
 
     # 上传文件
@@ -159,19 +212,6 @@ with SFTPClient('example.com', 22, 'user', password='pass') as sftp:
 
     # 执行命令
     code, stdout, stderr = sftp.execute_command('ls -la')
-```
-
-```python
-# 密钥认证
-with SFTPClient('example.com', 22, 'user',
-                private_key_path='/path/key.pem',
-                private_key_passphrase='pass') as sftp:
-
-    # 上传目录
-    sftp.upload_dir('/local/dir', '/remote/dir')
-
-    # 下载目录
-    sftp.download_dir('/remote/dir', '/local/dir')
 ```
 
 ### 图片下载示例
@@ -194,7 +234,7 @@ dl.download_image(
     'images/img.jpg'
 )
 
-# 批量下载URL列表
+# 批量下载 URL 列表
 urls = ['https://a.com/1.jpg', 'https://a.com/2.jpg']
 dl.download_from_list(urls, 'images/')
 
@@ -309,7 +349,23 @@ claude-skill/
 ├── skills/                            # Claude Code Skills
 │   ├── __init__.py
 │   │
-│   ├── sftp_tool/                    # SFTP 工具
+│   ├── pdf_tool/                      # PDF 工具
+│   │   ├── __init__.py
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   ├── pdf_tool.py
+│   │   ├── example.py
+│   │   └── requirements.txt
+│   │
+│   ├── image_processor/               # 图片处理器
+│   │   ├── __init__.py
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   ├── image_processor.py
+│   │   ├── example.py
+│   │   └── requirements.txt
+│   │
+│   ├── sftp_tool/                     # SFTP 工具
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -317,7 +373,7 @@ claude-skill/
 │   │   ├── example.py
 │   │   └── requirements.txt
 │   │
-│   ├── image_downloader/             # 图片下载器
+│   ├── image_downloader/               # 图片下载器
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -325,7 +381,7 @@ claude-skill/
 │   │   ├── example.py
 │   │   └── requirements.txt
 │   │
-│   ├── ffmpeg_processor/             # FFmpeg 视频处理
+│   ├── ffmpeg_processor/              # FFmpeg 视频处理
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
 │   │   ├── README.md
@@ -355,7 +411,7 @@ claude-skill/
 │   │   ├── README.md
 │   │   ├── directory_tree.py
 │   │   ├── example.py
-│   │   └── requirements.txt
+│   │   └ requirements.txt
 │   │
 │   ├── file_comparator/               # 文件对比工具
 │   │   ├── __init__.py
@@ -398,7 +454,7 @@ claude-skill/
 │       ├── example.py
 │       └── requirements.txt
 │
-└── tests/                             # 测试目录
+└── tests/                            # 测试目录
     ├── __init__.py
     ├── test_web_crawler.py
     └── test_pdf_word_converter.py
