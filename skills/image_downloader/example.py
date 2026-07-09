@@ -88,6 +88,40 @@ def example_summary():
     print("  print(f'跳过: {summary[\"skipped\"]}')")
 
 
+def example_weixin_download():
+    """微信公众号文章下载示例"""
+    print("\n" + "="*60)
+    print("示例5: 微信公众号文章图片下载")
+    print("="*60)
+
+    print("""
+使用方法:
+from skills.image_downloader import ImageDownloader
+
+# 创建下载器（可以设置较长的 delay 避免被封）
+dl = ImageDownloader(delay=0.5)
+
+# 从微信文章下载图片
+downloaded = dl.download_from_weixin_article(
+    'https://mp.weixin.qq.com/s/y-5TzQPXfi-8_LPt33Nhbw',
+    'weixin_images',
+    min_file_size=5000,  # 小于5KB的不保存（可能是图标）
+    filename_pattern='main_{index:03d}'
+)
+
+# 查看结果
+summary = dl.get_summary()
+print(f'成功下载: {summary[\"downloaded\"]}')
+print(f'失败: {summary[\"failed\"]}')
+
+# 特殊功能:
+# 1. 专门提取微信 mmbiz.qpic.cn/mmbiz.qlogo.cn 的图片
+# 2. 从 data-src 属性提取（微信文章主要是 data-src）
+# 3. 根据 wx_fmt 参数自动识别图片格式
+# 4. 自动过滤小尺寸图片（避免下载图标）
+""")
+
+
 def quick_reference():
     """快速参考"""
     print("\n" + "="*60)
@@ -111,7 +145,15 @@ def quick_reference():
 4. 全站爬取
    dl.crawl_and_download('https://example.com', 'images/site/', max_pages=20)
 
-5. 自定义下载参数
+5. 微信公众号文章图片下载
+   dl.download_from_weixin_article(
+       'https://mp.weixin.qq.com/s/xxx',
+       'weixin_images/',
+       min_file_size=5000,  # 过滤小图
+       filename_pattern='article_{index:03d}'
+   )
+
+6. 自定义下载参数
    dl = ImageDownloader(
        headers={'User-Agent': 'MyBot'},
        timeout=60,
@@ -119,14 +161,14 @@ def quick_reference():
        max_retries=5
    )
 
-6. 自定义文件名
+7. 自定义文件名
    dl.download_from_url(
        'https://example.com',
        'images/',
        filename_pattern='img_{index:03d}'
    )
 
-7. 查看结果
+8. 查看结果
    summary = dl.get_summary()
    print(f'成功: {summary[\"downloaded\"]}')
    print(f'失败: {summary[\"failed\"]}')
@@ -140,4 +182,5 @@ if __name__ == "__main__":
     example_extract_images()
     example_filename_handling()
     example_summary()
+    example_weixin_download()
     quick_reference()
