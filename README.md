@@ -4,7 +4,126 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![GitHub repo](https://img.shields.io/badge/GitHub-publisher--skill%2Fclaude--skill-green?logo=github)](https://github.com/publisher-skill/claude-skill)
 
-这是一个实用的Python技能工具集合，包含多个独立的功能模块，可以作为Claude Code的自定义skills使用，也可以单独导入使用。
+这是一个实用的 Python 技能工具集合，包含多个独立的功能模块，可以作为 Claude Code 的自定义 skills 使用，也可以单独导入使用。
+
+## Skill 列表
+
+### 📁 文件处理类 (4个)
+
+| Skill 名称 | 描述 | 目录 |
+|-----------|------|------|
+| **File Organizer** | 按类型、日期、扩展名自动整理文件 | [skills/file_organizer/](./skills/file_organizer/) |
+| **Batch Renamer** | 批量重命名文件（正则、序号、前缀等） | [skills/batch_renamer/](./skills/batch_renamer/) |
+| **Directory Tree** | 生成目录树，显示文件大小 | [skills/directory_tree/](./skills/directory_tree/) |
+| **File Comparator** | 对比文件/目录差异，查找重复文件 | [skills/file_comparator/](./skills/file_comparator/) |
+
+### 📊 数据处理类 (1个+)
+
+| Skill 名称 | 描述 | 目录 |
+|-----------|------|------|
+| **Data Processor** | CSV/JSON 读写、转换、过滤、合并 | [skills/data_processor/](./skills/data_processor/) |
+
+### 🔒 开发工具类 (1个+)
+
+| Skill 名称 | 描述 | 目录 |
+|-----------|------|------|
+| **Password Generator** | 密码生成器（安全密码、易记密码、PIN码） | [skills/password_generator/](./skills/password_generator/) |
+
+### 🌐 网络工具类 (2个)
+
+| Skill 名称 | 描述 | 目录 |
+|-----------|------|------|
+| **Web Crawler** | 基于 requests 和 BeautifulSoup 的网页爬虫工具 | [skills/web_crawler/](./skills/web_crawler/) |
+| **PDF-Word Converter** | PDF 与 Word 文档相互转换工具 | [skills/pdf_word_converter/](./skills/pdf_word_converter/) |
+
+## 安装
+
+### 安装所有 skills
+
+```bash
+git clone https://github.com/publisher-skill/claude-skill.git
+cd claude-skill
+pip install -r requirements.txt
+```
+
+### 单独安装某个 skill
+
+每个 skill 都有自己的 `requirements.txt`，可以单独安装：
+
+```bash
+# Web Crawler
+cd skills/web_crawler
+pip install -r requirements.txt
+
+# PDF-Word Converter
+cd skills/pdf_word_converter
+pip install -r requirements.txt
+```
+
+### 开发模式安装
+
+```bash
+pip install -e ".[dev]"
+```
+
+## 快速开始
+
+### 运行综合示例
+
+```bash
+python example.py
+```
+
+### 文件整理示例
+
+```python
+from skills.file_organizer import FileOrganizer
+
+organizer = FileOrganizer()
+
+# 按类型整理下载文件夹
+stats = organizer.organize_by_type('~/Downloads')
+
+# 预览整理结果
+stats = organizer.organize_by_type('~/Downloads', dry_run=True)
+```
+
+### 密码生成示例
+
+```python
+from skills.password_generator import PasswordGenerator
+
+gen = PasswordGenerator()
+
+# 生成安全密码
+password = gen.generate(length=16)
+
+# 生成易记密码
+memorable = gen.generate_memorable(word_count=4)
+
+# 检查强度
+result = gen.check_strength(password)
+print(f"强度: {result['strength_text']}")
+```
+
+### 数据处理示例
+
+```python
+from skills.data_processor import DataProcessor
+
+proc = DataProcessor()
+
+# 读取 CSV
+data = proc.read_csv('data.csv')
+
+# 过滤数据
+filtered = proc.filter_data(data, lambda x: int(x['age']) > 18)
+
+# 格式转换
+proc.csv_to_json('data.csv', 'data.json')
+```
+
+更多示例请参考各个 skill 目录下的 `example.py` 和 `README.md`。
 
 ## 项目结构
 
@@ -20,134 +139,77 @@ claude-skill/
 ├── .gitignore                         # Git 忽略文件
 ├── skills/                            # Claude Code Skills
 │   ├── __init__.py
-│   ├── web_crawler/                   # 网页爬虫模块
+│   │
+│   ├── file_organizer/               # 文件整理器
 │   │   ├── __init__.py
-│   │   ├── SKILL.md                   # Skill 定义 (Claude Code)
-│   │   ├── README.md                  # 详细文档
-│   │   ├── web_crawler.py             # 主模块
-│   │   ├── example.py                 # 使用示例
-│   │   └── requirements.txt           # 依赖
-│   └── pdf_word_converter/            # PDF-Word 转换模块
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   ├── file_organizer.py
+│   │   ├── example.py
+│   │   └── requirements.txt
+│   │
+│   ├── batch_renamer/                 # 批量重命名器
+│   │   ├── __init__.py
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   ├── batch_renamer.py
+│   │   ├── example.py
+│   │   └── requirements.txt
+│   │
+│   ├── directory_tree/                # 目录树生成器
+│   │   ├── __init__.py
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   ├── directory_tree.py
+│   │   ├── example.py
+│   │   └── requirements.txt
+│   │
+│   ├── file_comparator/               # 文件对比工具
+│   │   ├── __init__.py
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   ├── file_comparator.py
+│   │   ├── example.py
+│   │   └── requirements.txt
+│   │
+│   ├── data_processor/                # 数据处理器
+│   │   ├── __init__.py
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   ├── data_processor.py
+│   │   ├── example.py
+│   │   └── requirements.txt
+│   │
+│   ├── password_generator/            # 密码生成器
+│   │   ├── __init__.py
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   ├── password_generator.py
+│   │   ├── example.py
+│   │   └── requirements.txt
+│   │
+│   ├── web_crawler/                  # 网页爬虫
+│   │   ├── __init__.py
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   ├── web_crawler.py
+│   │   ├── example.py
+│   │   └── requirements.txt
+│   │
+│   └── pdf_word_converter/           # PDF-Word 转换
 │       ├── __init__.py
-│       ├── SKILL.md                   # Skill 定义 (Claude Code)
-│       ├── README.md                  # 详细文档
-│       ├── pdf_word_converter.py      # 主模块
-│       ├── converter.py               # 命令行工具
-│       ├── example.py                 # 使用示例
-│       └── requirements.txt           # 依赖
+│       ├── SKILL.md
+│       ├── README.md
+│       ├── pdf_word_converter.py
+│       ├── converter.py
+│       ├── example.py
+│       └── requirements.txt
+│
 └── tests/                             # 测试目录
     ├── __init__.py
     ├── test_web_crawler.py
     └── test_pdf_word_converter.py
 ```
-
-## Skill 列表
-
-| Skill 名称 | 描述 | 目录 |
-|-----------|------|------|
-| **Web Crawler** | 基于 requests 和 BeautifulSoup 的网页爬虫工具 | [skills/web_crawler/](./skills/web_crawler/) |
-| **PDF-Word Converter** | PDF 与 Word 文档相互转换工具 | [skills/pdf_word_converter/](./skills/pdf_word_converter/) |
-
-## 安装
-
-### 安装所有skills
-
-```bash
-git clone https://github.com/publisher-skill/claude-skill.git
-cd claude-skill
-pip install -r requirements.txt
-```
-
-### 单独安装某个skill
-
-```bash
-# Web Crawler
-pip install requests beautifulsoup4 lxml
-
-# PDF-Word Converter
-pip install pdf2docx docx2pdf python-docx
-```
-
-### 开发模式安装
-
-```bash
-pip install -e ".[dev]"
-```
-
-## 使用方式
-
-### 方式1: 作为 Claude Code Skill 使用 (推荐)
-
-每个 skill 在 `skills/` 目录下都可以独立运行，包含完整的 `SKILL.md` 定义文件。
-
-### 方式2: 作为 Python 包导入使用
-
-```python
-# 从 skills 导入
-from skills.web_crawler import WebCrawler
-from skills.pdf_word_converter import PdfWordConverter
-
-# 或者从根目录导入
-import sys
-sys.path.insert(0, '/path/to/claude-skill')
-from web_crawler import WebCrawler
-```
-
-## 快速开始
-
-### 运行综合示例
-
-```bash
-python example.py
-```
-
-### Web Crawler 使用示例
-
-```python
-from skills.web_crawler import WebCrawler
-
-crawler = WebCrawler()
-
-# 抓取网页
-html = crawler.fetch("https://example.com")
-
-# 提取链接
-links = crawler.extract_links(html, "https://example.com")
-
-# 下载图片
-crawler.download_image("https://example.com/image.jpg", "output/image.jpg")
-
-# 使用CSS选择器
-titles = crawler.select(html, "h1.title")
-```
-
-### PDF-Word Converter 使用示例
-
-```python
-from skills.pdf_word_converter import PdfWordConverter
-
-converter = PdfWordConverter()
-
-# PDF转Word
-converter.pdf_to_word("input.pdf", "output.docx")
-
-# Word转PDF
-converter.word_to_pdf("input.docx", "output.pdf")
-
-# 批量转换
-converter.convert_folder("input_dir", "output_dir", mode="pdf2word")
-```
-
-### 命令行使用
-
-```bash
-# PDF-Word Converter 命令行
-python skills/pdf_word_converter/converter.py check
-python skills/pdf_word_converter/converter.py pdf2word input.pdf
-python skills/pdf_word_converter/converter.py word2pdf input.docx
-```
-
-详细文档请查看各skill子目录下的 README.md。
 
 ## 运行测试
 
@@ -164,14 +226,14 @@ pytest --cov=skills tests/
 
 ## 添加新 Skill
 
-想要贡献新的skill？请查看 [CONTRIBUTING.md](./CONTRIBUTING.md) 了解详细指南。
+想要贡献新的 skill？请查看 [CONTRIBUTING.md](./CONTRIBUTING.md) 了解详细指南。
 
 简要步骤：
 
 1. 在 `skills/` 目录下创建新的子目录
 2. 创建必要的文件（`__init__.py`, 主模块, `SKILL.md`, `README.md`, `example.py`, `requirements.txt`）
-3. 在 `skills/__init__.py` 中导出新Skill
-4. 更新根目录 `README.md` 添加新Skill说明
+3. 在 `skills/__init__.py` 中添加新 skill
+4. 更新根目录 `README.md` 添加新 skill 说明
 5. 提交 Pull Request
 
 ## License
