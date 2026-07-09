@@ -19,4 +19,6 @@ __all__ = [
     'data_processor',
     'password_generator',
     'ffmpeg_processor',
+    'image_downloader',
+    'sftp_tool',
 ]

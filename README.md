@@ -8,11 +8,23 @@
 
 ## Skill 列表
 
+### 🔐 远程工具类 (1个+)
+
+| Skill 名称 | 描述 | 目录 |
+|-----------|------|------|
+| **SFTP Tool** | SFTP/SSH 远程文件管理工具（上传下载、列表、重命名、执行命令） | [skills/sftp_tool/](./skills/sftp_tool/) |
+
 ### 🎬 视频处理类 (1个+)
 
 | Skill 名称 | 描述 | 目录 |
 |-----------|------|------|
 | **FFmpeg Processor** | FFmpeg 视频/音频处理工具（格式转换、裁剪、合并、水印等） | [skills/ffmpeg_processor/](./skills/ffmpeg_processor/) |
+
+### 📷 图片处理类 (1个+)
+
+| Skill 名称 | 描述 | 目录 |
+|-----------|------|------|
+| **Image Downloader** | 网站图片批量下载工具（单张图片、HTML页面、全站爬取） | [skills/image_downloader/](./skills/image_downloader/) |
 
 ### 📁 文件处理类 (4个)
 
@@ -61,8 +73,12 @@ pip install -r requirements.txt
 cd skills/web_crawler
 pip install -r requirements.txt
 
-# PDF-Word Converter
-cd skills/pdf_word_converter
+# Image Downloader
+cd skills/image_downloader
+pip install -r requirements.txt
+
+# SFTP Tool
+cd skills/sftp_tool
 pip install -r requirements.txt
 
 # FFmpeg Processor (需要系统安装 FFmpeg)
@@ -82,6 +98,82 @@ pip install -e ".[dev]"
 
 ```bash
 python example.py
+```
+
+### SFTP 远程管理示例
+
+```python
+from skills.sftp_tool import SFTPClient
+
+# 密码认证
+with SFTPClient('example.com', 22, 'user', password='pass') as sftp:
+
+    # 上传文件
+    sftp.upload_file('local.txt', 'remote.txt')
+
+    # 下载文件
+    sftp.download_file('remote.txt', 'local.txt')
+
+    # 列出目录
+    files = sftp.list_dir('/path')
+
+    # 创建目录
+    sftp.mkdir('/new/path')
+
+    # 删除文件
+    sftp.delete('/old/file.txt')
+
+    # 执行命令
+    code, stdout, stderr = sftp.execute_command('ls -la')
+```
+
+```python
+# 密钥认证
+with SFTPClient('example.com', 22, 'user',
+                private_key_path='/path/key.pem',
+                private_key_passphrase='pass') as sftp:
+
+    # 上传目录
+    sftp.upload_dir('/local/dir', '/remote/dir')
+
+    # 下载目录
+    sftp.download_dir('/remote/dir', '/local/dir')
+```
+
+### 图片下载示例
+
+```python
+from skills.image_downloader import ImageDownloader
+
+dl = ImageDownloader(delay=1.0)
+
+# 从网页下载所有图片
+downloaded = dl.download_from_url(
+    'https://example.com/gallery',
+    'images/gallery/',
+    max_images=50
+)
+
+# 下载单张图片
+dl.download_image(
+    'https://example.com/img.jpg',
+    'images/img.jpg'
+)
+
+# 批量下载URL列表
+urls = ['https://a.com/1.jpg', 'https://a.com/2.jpg']
+dl.download_from_list(urls, 'images/')
+
+# 全站爬取
+dl.crawl_and_download(
+    'https://example.com',
+    'images/site/',
+    max_pages=20
+)
+
+# 查看摘要
+summary = dl.get_summary()
+print(f"成功: {summary['downloaded']}")
 ```
 
 ### FFmpeg 视频处理示例
@@ -183,6 +275,22 @@ claude-skill/
 ├── skills/                            # Claude Code Skills
 │   ├── __init__.py
 │   │
+│   ├── sftp_tool/                    # SFTP 工具
+│   │   ├── __init__.py
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   ├── sftp_tool.py
+│   │   ├── example.py
+│   │   └── requirements.txt
+│   │
+│   ├── image_downloader/             # 图片下载器
+│   │   ├── __init__.py
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   ├── image_downloader.py
+│   │   ├── example.py
+│   │   └── requirements.txt
+│   │
 │   ├── ffmpeg_processor/             # FFmpeg 视频处理
 │   │   ├── __init__.py
 │   │   ├── SKILL.md
@@ -245,7 +353,7 @@ claude-skill/
 │   │   ├── README.md
 │   │   ├── web_crawler.py
 │   │   ├── example.py
-│   │   └── requirements.txt
+│   │   └ requirements.txt
 │   │
 │   └── pdf_word_converter/           # PDF-Word 转换
 │       ├── __init__.py
