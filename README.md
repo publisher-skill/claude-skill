@@ -8,6 +8,12 @@
 
 ## Skill 列表
 
+### 🎬 视频处理类 (1个+)
+
+| Skill 名称 | 描述 | 目录 |
+|-----------|------|------|
+| **FFmpeg Processor** | FFmpeg 视频/音频处理工具（格式转换、裁剪、合并、水印等） | [skills/ffmpeg_processor/](./skills/ffmpeg_processor/) |
+
 ### 📁 文件处理类 (4个)
 
 | Skill 名称 | 描述 | 目录 |
@@ -58,6 +64,10 @@ pip install -r requirements.txt
 # PDF-Word Converter
 cd skills/pdf_word_converter
 pip install -r requirements.txt
+
+# FFmpeg Processor (需要系统安装 FFmpeg)
+cd skills/ffmpeg_processor
+# 详见 README.md 安装 FFmpeg
 ```
 
 ### 开发模式安装
@@ -72,6 +82,39 @@ pip install -e ".[dev]"
 
 ```bash
 python example.py
+```
+
+### FFmpeg 视频处理示例
+
+```python
+from skills.ffmpeg_processor import FFmpegProcessor
+
+ff = FFmpegProcessor()
+
+# 检查 FFmpeg 是否可用
+if not ff.check_ffmpeg():
+    print("请先安装 FFmpeg！")
+    exit(1)
+
+# 格式转换
+ff.to_mp4('input.avi', 'output.mp4')
+ff.to_mp3('video.mp4', 'audio.mp3')
+
+# 获取视频信息
+info = ff.get_video_info('video.mp4')
+print(f"分辨率: {info['video_resolution']}")
+print(f"时长: {info['duration']}秒")
+
+# 裁剪视频
+ff.trim_video('input.mp4', 'output.mp4', 
+              start_time='00:00:10', duration='00:00:30')
+
+# 视频转 GIF
+ff.video_to_gif('input.mp4', 'output.gif', fps=15)
+
+# 添加水印
+ff.add_watermark('input.mp4', 'output.mp4', 
+                'logo.png', position='br')
 ```
 
 ### 文件整理示例
@@ -139,6 +182,14 @@ claude-skill/
 ├── .gitignore                         # Git 忽略文件
 ├── skills/                            # Claude Code Skills
 │   ├── __init__.py
+│   │
+│   ├── ffmpeg_processor/             # FFmpeg 视频处理
+│   │   ├── __init__.py
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   ├── ffmpeg_processor.py
+│   │   ├── example.py
+│   │   └── requirements.txt
 │   │
 │   ├── file_organizer/               # 文件整理器
 │   │   ├── __init__.py

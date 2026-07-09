@@ -18,4 +18,5 @@ __all__ = [
     'file_comparator',
     'data_processor',
     'password_generator',
+    'ffmpeg_processor',
 ]
